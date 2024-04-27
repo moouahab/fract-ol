@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 03:09:01 by moouahab          #+#    #+#             */
-/*   Updated: 2023/11/17 22:41:23 by moouahab         ###   ########.fr       */
+/*   Created: 2024/04/27 01:28:34 by moouahab          #+#    #+#             */
+/*   Updated: 2024/04/27 11:15:06 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "cub.h"
 
-int	ft_printchar_fd(char c, int fd)
+int main(void)
 {
-	write(fd, &c, 1);
-	return (1);
+    return (0);
 }

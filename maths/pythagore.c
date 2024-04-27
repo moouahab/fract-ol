@@ -1,28 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   pythagore.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 03:06:56 by moouahab          #+#    #+#             */
-/*   Updated: 2023/11/17 22:41:23 by moouahab         ###   ########.fr       */
+/*   Created: 2024/04/26 22:32:15 by moouahab          #+#    #+#             */
+/*   Updated: 2024/04/27 11:15:00 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "cub.h"
 
-int	ft_printstr_fd(char	*str, int fd)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		i += write(1, "(null)", 6);
-	else
-	{
-		while (str[i])
-			ft_printchar_fd(str[i++], fd);
-	}
-	return (i);
-}
