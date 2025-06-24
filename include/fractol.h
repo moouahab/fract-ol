@@ -21,6 +21,7 @@
 # include <X11/X.h>
 # include <math.h>
 # include <stdio.h>
+# include <pthread.h>
 
 # define WIDTH 800
 # define HEIGHT 800
@@ -68,6 +69,15 @@ typedef struct s_mlx_data
 	t_complexe	z;
 	t_img		img;
 }t_mlx_data;
+
+# define THREAD_COUNT 8
+
+typedef struct s_thread
+{
+    t_mlx_data  *mlx;
+    int         start_y;
+    int         end_y;
+}t_thread;
 
 double	ft_atof(char *str);
 void	farctolcmp(t_complexe	*z, t_complexe	*c, t_mlx_data	*data);
