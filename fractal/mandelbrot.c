@@ -71,25 +71,54 @@ int	convergence(t_mlx_data	*data, double x, double y)
 	return (i);
 }
 
-int	draw_mandelbrot(t_mlx_data	*mlx)
-{
-	int	x;
-	int	y;
-	int	converge;
-	int	color;
 
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			converge = convergence(mlx, x, y);
-			color = color_cyber(converge, converge);
-			img_pix_put(&mlx->img, x, y, color);
-			x++;
-		}
-		y++;
-	}
-	return (0);
+static void    *draw_chunk(void *arg)
+{
+        t_thread        *t;
+        int             x;
+        int             y;
+        int             converge;
+        int             color;
+
+        t = (t_thread *)arg;
+        y = t->start_y;
+        while (y < t->end_y)
+        {
+                x = 0;
+                while (x < WIDTH)
+                {
+                        converge = convergence(t->mlx, x, y);
+                        color = color_cyber(converge, converge);
+                        img_pix_put(&t->mlx->img, x, y, color);
+                        x++;
+                }
+                y++;
+        }
+        return (NULL);
+}
+
+int     draw_mandelbrot(t_mlx_data      *mlx)
+{
+        pthread_t       threads[THREAD_COUNT];
+        t_thread        data[THREAD_COUNT];
+        int             segment;
+        int             i;
+
+        segment = HEIGHT / THREAD_COUNT;
+        i = 0;
+        while (i < THREAD_COUNT)
+        {
+                data[i].mlx = mlx;
+                data[i].start_y = i * segment;
+                data[i].end_y = (i == THREAD_COUNT - 1) ? HEIGHT : (i + 1) * segment;
+                pthread_create(&threads[i], NULL, draw_chunk, &data[i]);
+                i++;
+        }
+        i = 0;
+        while (i < THREAD_COUNT)
+        {
+                pthread_join(threads[i], NULL);
+                i++;
+        }
+        return (0);
 }

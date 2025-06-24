@@ -50,7 +50,7 @@ printf:
 	@make -C $(PRINTF_DIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS) $(PRINTF_LIB) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS) $(PRINTF_LIB) $(LIBFT) -lpthread
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)

@@ -20,9 +20,8 @@ else ifeq ($(UNAME), FreeBSD)
 	# FreeBSD
 	CC = clang
 else
-	#Linux and others...
+	# Linux and other Unix-like systems
 	CC	= gcc
-	LFLAGS += -lbsd
 endif
 
 all: $(NAME)
